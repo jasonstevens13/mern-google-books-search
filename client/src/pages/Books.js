@@ -57,9 +57,10 @@ function Books() {
   return (
     <Container fluid>
       <Row>
-        <Col size="md-6">
+        <Col size="md-12 sm-12">
           <Jumbotron>
-            <h1>What Books Should I Read?</h1>
+            <h1>(React) Google Books Search</h1>
+            <p>Search for and save books of interest</p>
           </Jumbotron>
           <form>
             <Input
@@ -67,44 +68,34 @@ function Books() {
               name="title"
               placeholder="Title (required)"
             />
-            <Input
-              onChange={handleInputChange}
-              name="author"
-              placeholder="Author (required)"
-            />
-            <TextArea
-              onChange={handleInputChange}
-              name="synopsis"
-              placeholder="Synopsis (Optional)"
-            />
             <FormBtn
-              disabled={!(formObject.author && formObject.title)}
+              disabled={!(formObject.title)}
               onClick={handleFormSubmit}
             >
-              Submit Book
+              Search for Book
               </FormBtn>
           </form>
         </Col>
-        <Col size="md-6 sm-12">
-          <Jumbotron>
-            <h1>Books On My List</h1>
-          </Jumbotron>
-          {books.length ? (
-            <List>
-              {books.map(book => (
-                <ListItem key={book._id}>
-                  <Link to={"/books/" + book._id}>
-                    <strong>
-                      {book.title} by {book.author}
-                    </strong>
-                  </Link>
-                  <DeleteBtn onClick={() => deleteBook(book._id)} />
-                </ListItem>
-              ))}
-            </List>
-          ) : (
-              <h3>No Results to Display</h3>
-            )}
+        <Col size="md-12 sm-12">
+          <div>
+            {books.length ? (
+              <List>
+                {books.map(book => (
+                  <ListItem key={book._id}>
+                    <Link to={"/books/" + book._id}>
+                      <strong>
+                        {book.title} by {book.author}
+                      </strong>
+                    </Link>
+                    <DeleteBtn onClick={() => deleteBook(book._id)} />
+                  </ListItem>
+                ))}
+              </List>
+            ) : (
+                <h3>No Results to Display</h3>
+              )}
+          </div>
+
         </Col>
       </Row>
     </Container>
