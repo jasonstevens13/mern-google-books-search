@@ -5,7 +5,7 @@ import React from "react";
 // That way we don't have to define them all individually
 function ViewBtn(props) {
     return (
-        <button type="button" role="button" className="btn btn-success" {...props} tabIndex="0">
+        <button type="button" role="button" className="btn btn-primary" {...props} tabIndex="0">
             View
         </button>
     );
